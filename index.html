@@ -98,7 +98,7 @@
   .section-ornament::after { content: ''; width: 70px; height: 1px; background: rgba(95, 124, 111, 0.4); }
 
   #hero {
-    min-height: 100vh;
+    min-height: 90vh;
     width: 100%;
     padding: 64px 20px 90px;
     text-align: center;
@@ -371,19 +371,21 @@
 
   #schedule { text-align: center; }
   .schedule-grid {
-    width: min(860px, 100%);
+    /* width: min(860px, 100%); */
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    /* grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px; */
+    justify-items: center;
   }
   .schedule-grid img {
-    width: 100%;
+    width: min(100%, 360px);
     border-radius: 16px;
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
+    display: block;
   }
   .event-date-note {
     width: min(720px, 100%);
@@ -418,7 +420,7 @@
 
   #muhurtam { text-align: center; padding-top: 30px; }
   .muhurtam-photo {
-    width: min(860px, 100%);
+    width: min(100%, 360px);
     margin: 0 auto 14px;
   }
   .muhurtam-photo img {
@@ -426,8 +428,9 @@
     border-radius: 16px;
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
+    display: block;
   }
   .muhurtam-note {
     width: min(720px, 100%);
@@ -647,7 +650,7 @@
   <div class="intro-inner">
     <div class="open-card" id="open-invite-card" role="button" tabindex="0" aria-label="Open invitation">
       <div class="envelope-wrap">
-        <img class="entry-image" src="/Assets/Envalop.png" alt="Wedding invitation envelope">
+        <img class="entry-image" src="Assets/Envalop.png" alt="Wedding invitation envelope">
         <!-- <span class="envelope-initials">G &amp; A</span> -->
       </div>
       <h3 id="open-invite-title">You are Invited</h3>
@@ -702,7 +705,7 @@
   <div class="section-title">Event Schedule</div>
   <div class="section-ornament"><span>❧</span></div>
   <div class="schedule-grid">
-    <img src="./screencapture-maryam-folds-github-io-Rakesh-Shravani-2026-06-18-14_41_02.png" alt="Event schedule visual">
+    <img src="Assets/Reception.png" alt="Event schedule visual">
   </div>
   <p class="event-date-note">
     <span class="event-main">Reception: 02 July 2026 | 7 PM Onwards</span>
@@ -716,7 +719,7 @@
   <div class="section-title">Shubha Muhurtam</div>
   
   <div class="muhurtam-photo">
-    <img src="/Assets/Muhurtam.png" alt="Muhurtam ceremony visual">
+    <img src="Assets/Muhurtam.png" alt="Muhurtam ceremony visual">
   </div>
   <p class="muhurtam-note">
     <span class="muhurtam-main">Muhurtam: 03 July 2026 | 7:15 AM</span>
@@ -765,8 +768,8 @@
     </div>
    
     <div class="venue-images">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80" alt="Venue visual one">
-      <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&q=80" alt="Venue visual two">
+      <img src="Assets/KalyanaMandapa.png" alt="Venue visual one">
+      <img src="Assets/Front2.png" alt="Venue visual two">
     </div>
   </div>
 </section>
