@@ -323,6 +323,50 @@
     box-shadow: var(--shadow);
     cursor: pointer;
   }
+  .reveal-cue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f3efe8 48%, #ded6cb 100%);
+    border: 1px solid rgba(95, 124, 111, 0.26);
+    box-shadow:
+      inset 0 2px 6px rgba(255, 255, 255, 0.75),
+      inset 0 -7px 12px rgba(95, 124, 111, 0.2),
+      0 12px 20px rgba(33, 52, 41, 0.2);
+    position: relative;
+    transform-style: preserve-3d;
+    animation: tapCueFloat 2.4s ease-in-out infinite;
+  }
+  .reveal-cue::before {
+    content: '\1F446';
+    font-size: 30px;
+    transform: translateY(-2px);
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.18));
+  }
+  .reveal-cue::after {
+    content: '';
+    position: absolute;
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    border: 2px solid rgba(197, 152, 74, 0.42);
+    animation: tapCuePulse 1.8s ease-out infinite;
+    pointer-events: none;
+  }
+  .reveal-cue.hidden { display: none; }
+  @keyframes tapCueFloat {
+    0%, 100% { transform: translateY(0) rotateX(0deg); }
+    50% { transform: translateY(-4px) rotateX(8deg); }
+  }
+  @keyframes tapCuePulse {
+    0% { transform: scale(0.78); opacity: 0.78; }
+    75% { transform: scale(1.05); opacity: 0.2; }
+    100% { transform: scale(1.12); opacity: 0; }
+  }
   .reveal-text {
     font-size: 12px;
     letter-spacing: 2px;
@@ -665,7 +709,7 @@
   <div class="intro-inner">
     <div class="open-card" id="open-invite-card" role="button" tabindex="0" aria-label="Open invitation">
       <div class="envelope-wrap">
-        <img class="entry-image" src="./Envalop.png" alt="Wedding invitation envelope">
+        <img class="entry-image" src="Assets/Envalop.png" alt="Wedding invitation envelope">
         <!-- <span class="envelope-initials">G &amp; A</span> -->
       </div>
       <h3 id="open-invite-title">You are Invited</h3>
@@ -698,6 +742,7 @@
   <div class="section-title">Reveal The Wedding Date</div>
   <div class="section-ornament"><span>❧</span></div>
   <div class="reveal-card" id="reveal-card" role="button" tabindex="0" aria-label="Reveal wedding date">
+    <span class="reveal-cue" id="reveal-cue" aria-hidden="true"></span>
     <p class="reveal-text">Tap to reveal the wedding date</p>
     <div class="hidden-date" id="hidden-date">03 July 2026</div>
     <!-- <button class="reveal-btn" id="reveal-btn" type="button">Tap to Reveal</button> -->
@@ -720,7 +765,7 @@
   <div class="section-title">Event Schedule</div>
   <div class="section-ornament"><span>❧</span></div>
   <div class="schedule-grid">
-    <img src="./Reception.png" alt="Event schedule visual">
+    <img src="Assets/Reception.png" alt="Event schedule visual">
   </div>
   <p class="event-date-note">
     <span class="event-main">Reception: 02 July 2026 | 7 PM Onwards</span>
@@ -734,7 +779,7 @@
   <div class="section-title">Shubha Muhurtam</div>
   
   <div class="muhurtam-photo">
-    <img src="./Muhurtam.png" alt="Muhurtam ceremony visual">
+    <img src="Assets/Muhurtam.png" alt="Muhurtam ceremony visual">
   </div>
   <p class="muhurtam-note">
     <span class="muhurtam-main">Muhurtam: 03 July 2026 | 7:15 AM</span>
@@ -783,8 +828,8 @@
     </div>
    
     <div class="venue-images">
-      <img src="./KalyanaMandapa.png" alt="Venue visual one">
-      <!-- <img src="./Front2.png" alt="Venue visual two"> -->
+      <img src="Assets/KalyanaMandapa.png" alt="Venue visual one">
+      <img src="Assets/Front2.jpg" alt="Venue visual two">
     </div>
   </div>
 </section>
@@ -906,6 +951,7 @@
 
   const revealBtn = document.getElementById('reveal-btn');
   const revealCard = document.getElementById('reveal-card');
+  const revealCue = document.getElementById('reveal-cue');
   const revealText = document.querySelector('.reveal-text');
   const hiddenDate = document.getElementById('hidden-date');
   const countdownSection = document.getElementById('countdown-section');
@@ -919,6 +965,9 @@
     }
     if (revealText) {
       revealText.classList.add('hidden');
+    }
+    if (revealCue) {
+      revealCue.classList.add('hidden');
     }
     hiddenDate.classList.add('revealed');
     if (revealBtn) {
